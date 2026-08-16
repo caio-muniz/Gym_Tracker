@@ -1,0 +1,81 @@
+.abas-grupo {
+  display: flex;
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.aba-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cor-texto-secundario);
+}
+
+.aba-item.ativa {
+  background-color: var(--cor-primaria);
+  color: var(--cor-primaria-texto);
+}
+
+.seletor-exercicio {
+  margin-bottom: 20px;
+}
+
+.grafico-card {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: var(--raio-card);
+  padding: 18px 8px 8px;
+  margin-bottom: 16px;
+}
+
+.grafico-card-titulo {
+  font-size: 14px;
+  color: var(--cor-texto-secundario);
+  padding: 0 12px 12px;
+}
+
+.resumo-progresso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.resumo-progresso-item {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: var(--raio-card);
+  padding: 16px;
+  text-align: center;
+}
+
+.resumo-progresso-valor {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+.resumo-progresso-rotulo {
+  font-size: 11px;
+  color: var(--cor-texto-secundario);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.botao-registrar-corpo {
+  width: 100%;
+  background-color: var(--cor-card);
+  border: 1px dashed var(--cor-card-borda);
+  color: var(--cor-primaria);
+  font-weight: 600;
+  padding: 14px;
+  border-radius: var(--raio-card);
+  margin-top: 8px;
+}

@@ -10,10 +10,7 @@ import Perfil from './pages/Perfil';
 import { estaAutenticado } from './api/api';
 import './styles/app.css';
 
-/**
- * Componente raiz: define as rotas do app e monta o "shell" comum
- * (largura máxima de app mobile + bottom nav), exceto na tela de Login.
- */
+
 export default function App() {
   return (
     <HashRouter>

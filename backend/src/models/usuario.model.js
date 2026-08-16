@@ -1,6 +1,6 @@
 //Consulta de usuarios
 
-const pool = require('../config/db');
+const pool = require('../config/database');
 
 async function criar({ nome, email, senhaHash }) {
   const resultado = await pool.query(

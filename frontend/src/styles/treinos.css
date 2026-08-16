@@ -1,0 +1,170 @@
+.treino-card {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-left: 4px solid var(--cor-treino, var(--cor-primaria));
+  border-radius: var(--raio-card);
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.treino-card-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.treino-card-nome {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.treino-card-qtd {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  margin-top: 2px;
+}
+
+.treino-card-acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.botao-play {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-primaria-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-excluir {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--cor-texto-terciario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.botao-excluir:hover {
+  color: var(--cor-vermelho);
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+.exercicio-linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.exercicio-linha-nome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-texto-principal);
+}
+
+.exercicio-linha-nome svg {
+  color: var(--cor-texto-terciario);
+  flex-shrink: 0;
+}
+
+.exercicio-linha-detalhe {
+  color: var(--cor-texto-secundario);
+  font-variant-numeric: tabular-nums;
+}
+
+.exercicio-mais {
+  font-size: 13px;
+  color: var(--cor-texto-terciario);
+  padding-top: 4px;
+}
+
+/* Templates */
+.templates-titulo {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  margin: 24px 0 12px;
+}
+
+.template-item {
+  width: 100%;
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.template-item svg {
+  color: var(--cor-texto-terciario);
+}
+
+/* Formulário de exercício dentro do modal de criação de treino */
+.exercicio-form-item {
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.exercicio-form-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.exercicio-form-topo span {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  font-weight: 600;
+}
+
+.link-remover {
+  font-size: 13px;
+  color: var(--cor-vermelho);
+}
+
+.link-adicionar-exercicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  border: 1px dashed var(--cor-card-borda);
+  border-radius: 12px;
+  color: var(--cor-primaria);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.cor-swatch-grupo {
+  display: flex;
+  gap: 10px;
+}
+
+.cor-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+.cor-swatch.selecionada {
+  border-color: #fff;
+}

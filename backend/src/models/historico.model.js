@@ -1,6 +1,6 @@
 //Consulta do historico de treinos concluidos
 
-const pool = require('../config/db');
+const pool = require('../config/database');
 
 // Lista as sessões de um usuário
 async function listarPorUsuario(usuarioId) {

@@ -1,6 +1,6 @@
 //Consulta de treinos junto com a lista de exercicios
 
-const pool = require('../config/db');
+const pool = require('../config/database');
 
 async function listarPorUsuario(usuarioId) {
   const { rows: treinos } = await pool.query(

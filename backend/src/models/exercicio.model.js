@@ -1,6 +1,6 @@
 // Consulta de um exercicio individual
 
-const pool = require('../config/db');
+const pool = require('../config/database');
 const { formatarExercicio } = require('./treino.model');
 
 // Traz também o dono do treino (dono_id), usado para checar permissão no controller

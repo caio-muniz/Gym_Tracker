@@ -1,0 +1,92 @@
+
+.home-saudacao {
+  font-size: 14px;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 2px;
+}
+
+.home-nome {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: var(--raio-card);
+  padding: 18px 8px;
+  text-align: center;
+}
+
+.stat-card-icone {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.stat-card-valor {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stat-card-rotulo {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--cor-texto-secundario);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* Card "Treino de hoje" */
+.treino-hoje-card {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-card-borda);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 0 40px -12px rgba(163, 230, 53, 0.15);
+}
+
+.treino-hoje-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.treino-hoje-rotulo {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.treino-hoje-nome {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.treino-hoje-icone {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-primaria-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.treino-hoje-qtd {
+  color: var(--cor-texto-secundario);
+  font-size: 14px;
+  margin: 14px 0 20px;
+}

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const pool = require('../config/db');
+const pool = require('../config/database');
 
 const CATALOGO_CONQUISTAS = [
   ['PRIMEIRO_TREINO', 'Primeiro Treino', 'Complete seu primeiro treino', '🎯'],
