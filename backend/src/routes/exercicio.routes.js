@@ -1,4 +1,4 @@
-//atualizar ou excluir um exercicio
+//Atualização e exclusão de um exercício específico pelo seu próprio id
 
 const express = require('express');
 const asyncHandler = require('../utils/asyncHandler');

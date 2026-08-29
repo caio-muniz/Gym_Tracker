@@ -1,8 +1,12 @@
-//Regra de negocio das conquistas
+/**
+ * Regras de negócio das conquistas: cálculo de streak (dias seguidos
+ * treinando), contagem de treinos na semana, e verificação/desbloqueio de
+ * conquistas logo após uma sessão de treino ser registrada.
+ */
 
 const conquistaModel = require('../models/conquista.model');
 
-// Quantos dias consecutivos o usuário treinou
+// Quantos dias consecutivos (contando até hoje ou ontem) o usuário treinou
 function calcularStreak(sessoes) {
   if (sessoes.length === 0) return 0;
 
@@ -27,7 +31,7 @@ function calcularStreak(sessoes) {
   return streak;
 }
 
-// Quantos dias distintos tiveram treino
+// Quantos dias distintos, tiveram treino
 function contarTreinosDaSemana(sessoes) {
   const agora = new Date();
   const inicioSemana = new Date(agora);
@@ -42,8 +46,11 @@ function contarTreinosDaSemana(sessoes) {
   return dias.size;
 }
 
-
-//Verificação após uma nova sessão ser registrada, quais conquistas passaram a ser cumpridas e as desbloqueia
+/**
+ * Verifica, após uma nova sessão ser registrada, quais conquistas passaram a
+ * ser cumpridas e as desbloqueia. Recebe TODAS as sessões do usuário (já
+ * incluindo a nova), ordenadas da mais recente para a mais antiga.
+ */
 async function verificarEDesbloquear(usuarioId, sessoes) {
   const streak = calcularStreak(sessoes);
   const total = sessoes.length;
@@ -53,7 +60,8 @@ async function verificarEDesbloquear(usuarioId, sessoes) {
   if (streak >= 7) await conquistaModel.desbloquear(usuarioId, 'SEMANA_COMPLETA');
   if (total >= 10) await conquistaModel.desbloquear(usuarioId, '10_TREINOS');
 
-  // evolui carga se alguma série da sessão mais recente superou a maior carga já registrada anteriormente
+  // "Evolução de Carga": alguma série da sessão mais recente superou a maior
+  // carga já registrada anteriormente para o mesmo exercício
   const [ultimaSessao, ...anteriores] = sessoes;
   const seriesAnteriores = anteriores.flatMap((s) => s.series);
 

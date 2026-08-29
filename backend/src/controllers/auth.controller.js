@@ -1,5 +1,4 @@
-//cadastro de usuario e login
-
+//Cadastro de usuário e login
 const bcrypt = require('bcryptjs');
 const usuarioModel = require('../models/usuario.model');
 const { gerarToken } = require('../utils/jwt');

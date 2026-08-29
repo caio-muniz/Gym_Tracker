@@ -1,6 +1,9 @@
--- Tabelas usadas pelo Gym Tracker
+-- Todas as tabelas usadas pelo Gym Tracker. Executado automaticamente ao
+-- subir o servidor, com CREATE TABLE IF NOT EXISTS,
+-- então é seguro rodar toda vez que a aplicação inicia.
+-- ============================================================================
 
--- Usuarios do sistema (login/cadastro)
+-- Usuários do sistema (login/cadastro)
 CREATE TABLE IF NOT EXISTS usuarios (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -9,7 +12,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     criado_em TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- Treinos
+-- Treinos: cada um pertence a um usuário (dono)
 CREATE TABLE IF NOT EXISTS treinos (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
@@ -18,7 +21,8 @@ CREATE TABLE IF NOT EXISTS treinos (
     criado_em TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- Exercicios
+-- Exercícios: cada um pertence a um treino. Ao excluir o treino, seus
+-- exercícios são excluídos junto (ON DELETE CASCADE).
 CREATE TABLE IF NOT EXISTS exercicios (
     id SERIAL PRIMARY KEY,
     treino_id INTEGER NOT NULL REFERENCES treinos(id) ON DELETE CASCADE,
@@ -28,7 +32,7 @@ CREATE TABLE IF NOT EXISTS exercicios (
     carga_kg DOUBLE PRECISION NOT NULL
 );
 
--- Historico de treinos concluidos
+-- Histórico: uma linha para cada SESSÃO de treino concluída
 CREATE TABLE IF NOT EXISTS historico_treinos (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
@@ -40,7 +44,7 @@ CREATE TABLE IF NOT EXISTS historico_treinos (
     volume_total_kg DOUBLE PRECISION
 );
 
--- Historico de series executadas no treino
+-- Séries realmente executadas em cada treino
 CREATE TABLE IF NOT EXISTS historico_series (
     id SERIAL PRIMARY KEY,
     historico_treino_id INTEGER NOT NULL REFERENCES historico_treinos(id) ON DELETE CASCADE,
@@ -50,7 +54,7 @@ CREATE TABLE IF NOT EXISTS historico_series (
     carga_kg DOUBLE PRECISION NOT NULL
 );
 
--- Conquistas
+-- Catálogo fixo de conquistas (populado uma vez pelo initDb.js)
 CREATE TABLE IF NOT EXISTS conquistas (
     id SERIAL PRIMARY KEY,
     codigo VARCHAR(50) UNIQUE NOT NULL,
@@ -59,7 +63,7 @@ CREATE TABLE IF NOT EXISTS conquistas (
     icone VARCHAR(10)
 );
 
--- Conquistas desbloqueadas pelo usuario
+-- Quais conquistas cada usuário já desbloqueou
 CREATE TABLE IF NOT EXISTS usuario_conquistas (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
@@ -68,7 +72,7 @@ CREATE TABLE IF NOT EXISTS usuario_conquistas (
     UNIQUE (usuario_id, conquista_id)
 );
 
--- Medidas corporais
+-- Medidas corporais (aba "Corpo" da tela Progresso)
 CREATE TABLE IF NOT EXISTS registros_corpo (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,

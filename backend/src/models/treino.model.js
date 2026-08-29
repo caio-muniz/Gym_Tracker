@@ -1,7 +1,8 @@
-//Consulta de treinos junto com a lista de exercicios
+//Consultas SQL de treinos, sempre trazendo junto a lista de exercícios
 
-const pool = require('../config/database');
+const pool = require('../config/db');
 
+// Lista os treinos de um usuário, cada um já com sua lista de exercícios
 async function listarPorUsuario(usuarioId) {
   const { rows: treinos } = await pool.query(
     'SELECT * FROM treinos WHERE usuario_id = $1 ORDER BY id',
@@ -25,7 +26,7 @@ async function buscarPorId(id) {
   return formatarTreino(treino, exercicios);
 }
 
-// Cria o treino e exercicios junto
+// Cria o treino e, se enviados, já cria os exercícios junto (mesma requisição)
 async function criar(usuarioId, { nome, cor, exercicios = [] }) {
   const { rows } = await pool.query(
     'INSERT INTO treinos (usuario_id, nome, cor) VALUES ($1, $2, $3) RETURNING *',
@@ -49,7 +50,7 @@ async function atualizar(id, { nome, cor }) {
   return buscarPorId(id);
 }
 
-// Exercicios do treino saem junto pelo ON DELETE CASCADE do schema
+// Exercícios do treino saem junto pelo ON DELETE CASCADE do schema
 async function excluir(id) {
   await pool.query('DELETE FROM treinos WHERE id = $1', [id]);
 }

@@ -3,7 +3,7 @@
   margin: 0 auto;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 96px;
+  padding-bottom: 96px; /* espaço para a bottom nav não cobrir conteúdo */
 }
 
 .pagina {

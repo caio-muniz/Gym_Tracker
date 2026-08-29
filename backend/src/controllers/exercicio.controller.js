@@ -1,8 +1,8 @@
-//CRUD de exercicios individuais
-
+//CRUD de exercícios individuais
 const exercicioModel = require('../models/exercicio.model');
 const treinoModel = require('../models/treino.model');
 
+// Criação é feita dentro de um treino específico: POST /api/treinos/:treinoId/exercicios
 async function criar(req, res) {
   const treino = await treinoModel.buscarPorId(req.params.treinoId);
   if (!treino) return res.status(404).json({ mensagem: 'Treino não encontrado' });

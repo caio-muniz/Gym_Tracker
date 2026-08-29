@@ -1,25 +1,24 @@
-// Consulta SQL do catalogo de conquistas
-
-const pool = require('../config/database.js');
+//Consultas SQL do catálogo fixo de conquistas e das conquistas já desbloqueadas por cada usuário.
+const pool = require('../config/db');
 
 async function listarCatalogo() {
-    const {rows} = await pool.quary('SELECT * FROM  conquistas ORDER BY id');
-    return rows;
-    
+  const { rows } = await pool.query('SELECT * FROM conquistas ORDER BY id');
+  return rows;
 }
 
-async function listarDesbloqueadasPorUsuario(usuarioID) {
-    const {rows} = await pool.query(
-        `SELECT c.codigo, uc.data_conquista
-        FROM usuario_conquistas uc
-        JOIN conquistas c ON c.id = uc.conquista_id
-        WHERE uc.usuario_id = $1`,
-        [usuarioId]
-    );
-    return rows;
+async function listarDesbloqueadasPorUsuario(usuarioId) {
+  const { rows } = await pool.query(
+    `SELECT c.codigo, uc.data_conquista
+     FROM usuario_conquistas uc
+     JOIN conquistas c ON c.id = uc.conquista_id
+     WHERE uc.usuario_id = $1`,
+    [usuarioId]
+  );
+  return rows;
 }
 
-// Essa funcao desbloqueia uma conquista para o usuário. Se ele já tiver nao faz nada
+// Desbloqueia uma conquista para o usuário. Se ele já tiver essa conquista,
+// não faz nada (ON CONFLICT DO NOTHING, graças à constraint UNIQUE do schema).
 async function desbloquear(usuarioId, codigo) {
   await pool.query(
     `INSERT INTO usuario_conquistas (usuario_id, conquista_id)
@@ -29,4 +28,4 @@ async function desbloquear(usuarioId, codigo) {
   );
 }
 
-module.exports = {listarCatalogo, listarDesbloqueadasPorUsuario, desbloquear};
+module.exports = { listarCatalogo, listarDesbloqueadasPorUsuario, desbloquear };

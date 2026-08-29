@@ -1,8 +1,9 @@
-//Consulta do historico de treinos concluidos
+//Consultas SQL do histórico de sessões de treino concluídas (tela Histórico)
 
-const pool = require('../config/database');
+const pool = require('../config/db');
 
-// Lista as sessões de um usuário
+// Lista as sessões de um usuário, cada uma já com sua lista de séries,
+// da mais recente para a mais antiga
 async function listarPorUsuario(usuarioId) {
   const { rows: sessoes } = await pool.query(
     'SELECT * FROM historico_treinos WHERE usuario_id = $1 ORDER BY data_execucao DESC',

@@ -1,3 +1,4 @@
+//Proteção rotas exigindo um token JWT válido no header
 const { verificarToken } = require('../utils/jwt');
 
 function autenticar(req, res, next) {

@@ -1,8 +1,8 @@
-// Evolucao de cargas dos exercicios
+//evolução da carca dos exercicios
 const historicoModel = require('../models/historico.model');
 const corpoModel = require('../models/corpo.model');
 
-// Nomes de exercícios já registrados no histórico do usuário
+// Nomes de exercícios já registrados no histórico do usuário (popula o seletor)
 async function listarExerciciosDisponiveis(req, res) {
   const historico = await historicoModel.listarPorUsuario(req.usuario.id);
   const nomes = [...new Set(historico.flatMap((sessao) => sessao.series.map((s) => s.exercicioNome)))].sort();

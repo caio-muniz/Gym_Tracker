@@ -1,4 +1,3 @@
-//listagem e registro do historico
 
 const express = require('express');
 const asyncHandler = require('../utils/asyncHandler');

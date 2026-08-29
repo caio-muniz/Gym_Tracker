@@ -1,3 +1,8 @@
+/*
+ * Funções para gerar e validar o token JWT usado para autenticar o usuário
+ * em todas as rotas protegidas. O token carrega id, nome e email do usuário,
+ * para não precisarmos consultar o banco em toda requisição só por causa disso.
+ */
 const jwt = require('jsonwebtoken');
 
 const SEGREDO = process.env.JWT_SECRET || 'troque-este-segredo-em-producao';

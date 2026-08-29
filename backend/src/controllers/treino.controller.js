@@ -1,4 +1,4 @@
-//CRUD de treinos
+//CRUD dos treinos
 const treinoModel = require('../models/treino.model');
 
 async function listar(req, res) {

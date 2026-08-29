@@ -1,4 +1,4 @@
-//tela inicial
+//tela de home inicial
 const treinoModel = require('../models/treino.model');
 const historicoModel = require('../models/historico.model');
 const conquistaModel = require('../models/conquista.model');
@@ -14,7 +14,7 @@ async function obterHome(req, res) {
   const streak = conquistaService.calcularStreak(historico);
   const treinosSemana = conquistaService.contarTreinosDaSemana(historico);
 
-//Sugerir o próximo treino em rodízio: o que vem depois, na lista, do último executado
+  // Sugere o próximo treino em rodízio: o que vem depois, na lista, do último executado
   let treinoDeHoje = null;
   if (treinos.length > 0) {
     const ultimoTreinoId = historico[0]?.treinoId;

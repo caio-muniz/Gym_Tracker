@@ -1,4 +1,4 @@
-//Historico de treinos concluidos
+//Lista o histórico de treinos concluídos e registra a conclusão de um novo treino
 
 const historicoModel = require('../models/historico.model');
 const conquistaService = require('../services/conquista.service');
@@ -17,6 +17,7 @@ async function registrar(req, res) {
 
   await historicoModel.criar(req.usuario.id, { treinoId, nomeTreino, corTreino, duracaoSegundos, series });
 
+  // Recarrega o histórico completo (já com a sessão criada) para calcular streak/conquistas
   const historicoAtualizado = await historicoModel.listarPorUsuario(req.usuario.id);
   await conquistaService.verificarEDesbloquear(req.usuario.id, historicoAtualizado);
 

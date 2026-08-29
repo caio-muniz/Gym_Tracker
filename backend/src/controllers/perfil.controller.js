@@ -1,3 +1,4 @@
+//Tela de perfil do usuario
 const usuarioModel = require('../models/usuario.model');
 const historicoModel = require('../models/historico.model');
 const conquistaModel = require('../models/conquista.model');

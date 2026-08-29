@@ -1,8 +1,11 @@
-/*Inicialiação do banco*/
-
+/**
+ * Inicialização do banco. Roda o schema.sql (CREATE TABLE
+ * IF NOT EXISTS, então é seguro executar toda vez) e garante que o catálogo
+ * fixo de conquistas exista.
+ */
 const fs = require('fs');
 const path = require('path');
-const pool = require('../config/database');
+const pool = require('../config/db');
 
 const CATALOGO_CONQUISTAS = [
   ['PRIMEIRO_TREINO', 'Primeiro Treino', 'Complete seu primeiro treino', '🎯'],
@@ -13,17 +16,17 @@ const CATALOGO_CONQUISTAS = [
 ];
 
 async function initDb() {
-    const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf-8');
-    await pool.query(schema);
+  const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf-8');
+  await pool.query(schema);
 
-    for (const [codigo, nome, descricao, icone] of CATALOGO_CONQUISTAS) {
-        await pool.query(
-            `INSERT INTO conquistas (codigo, nome, descricao, icone)
-             VALUES ($1, $2, $3, $4)
-             ON CONFLICT (codigo) DO NOTHING`,
-             [codigo, nome, descricao, icone]
-        );
-    }
+  for (const [codigo, nome, descricao, icone] of CATALOGO_CONQUISTAS) {
+    await pool.query(
+      `INSERT INTO conquistas (codigo, nome, descricao, icone)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (codigo) DO NOTHING`,
+      [codigo, nome, descricao, icone]
+    );
+  }
 }
 
 module.exports = initDb;

@@ -1,6 +1,5 @@
-//Consulta da tabela de registro corporal 
-
-const pool = require('../config/database');
+//Consultas SQL da tabela "registros_corpo" (aba "Corpo" da tela Progresso)
+const pool = require('../config/db');
 
 async function listarPorUsuario(usuarioId) {
   const { rows } = await pool.query(
