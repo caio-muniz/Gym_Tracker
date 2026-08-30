@@ -12,7 +12,7 @@ const PORTA = process.env.PORT || 8080;
 initDb()
   .then(() => {
     app.listen(PORTA, () => {
-      console.log(`Servidor rodando em http://localhost:${PORTA}`);
+      console.log(`Servidor rodando na porta ${PORTA}`);
     });
   })
   .catch((erro) => {

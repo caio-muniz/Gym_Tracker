@@ -17,8 +17,21 @@ const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
-// Libera o frontend React (rodando em outra porta) a chamar esta API
-app.use(cors({ origin: ['http://localhost:5173', 'http://localhost:3000'] }));
+const origensPermitidas = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
+function verificarOrigem(origin, callback) {
+  if (!origin || origensPermitidas.includes(origin)) {
+    callback(null, true);
+  } else {
+    callback(new Error('Origem não permitida pelo CORS'));
+  }
+}
+
+app.use(cors({ origin: verificarOrigem }));
 
 app.use(express.json());
 
@@ -30,7 +43,6 @@ app.use('/api/historico', historicoRoutes);
 app.use('/api/progresso', progressoRoutes);
 app.use('/api/perfil', perfilRoutes);
 
-// Precisa ser o último "app.use": é o que captura os erros repassados por asyncHandler
 app.use(errorHandler);
 
 module.exports = app;
