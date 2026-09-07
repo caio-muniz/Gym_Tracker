@@ -8,7 +8,7 @@ import Historico from './pages/Historico';
 import Progresso from './pages/Progresso';
 import Perfil from './pages/Perfil';
 import { estaAutenticado } from './api/api';
-import './styles/app.css';
+import './styles/App.css';
 
 
 export default function App() {
