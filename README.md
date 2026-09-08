@@ -89,6 +89,21 @@ O projeto foi desenvolvido com uma arquitetura simples e organizada, utilizando 
 
 ---
 
+## 🚀 Deploy
+
+O Gym Tracker está disponível em produção:
+
+* **Frontend:** Vercel
+* **Backend:** Render
+* **Banco de dados:** PostgreSQL
+
+### 🌐 Acesso
+
+**Aplicação:** https://gym-tracker-three-nu.vercel.app/
+
+O projeto utiliza uma arquitetura separada entre frontend e backend, com comunicação através de uma API REST.
+
+
 ## 🏗️ Arquitetura
 
 O backend segue uma arquitetura em camadas simples:
